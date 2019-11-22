@@ -8,6 +8,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import {FormBuilder, FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import {Camera} from '@ionic-native/camera/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import {WebView} from '@ionic-native/ionic-webview/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,8 +25,14 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     StatusBar,
     SplashScreen,
+    FormBuilder,
+    Camera,
+    FileTransfer,
+    WebView,
+
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[FormsModule, ReactiveFormsModule]
 })
 export class AppModule {}

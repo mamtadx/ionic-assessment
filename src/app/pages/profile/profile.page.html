@@ -1,0 +1,212 @@
+<ion-header>
+    <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-item lines="none" *ngIf="opType=='edit'">
+    <ion-button fill="clear" slot="end" color="rr-primary" >
+      <ion-icon name="trash" style="zoom:1.2;" ></ion-icon>
+    </ion-button>
+  </ion-item> -->
+  <form class="container" [formGroup]="register_user_form">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-text-center profile-image" >
+              <ion-avatar   class="profile-avatar">
+                <img src="assets/profile.png" class="dp-logo"/>
+              </ion-avatar>
+              <ion-chip fill="clear" (click) ="takePhoto()">
+                <ion-icon name="camera"  size="default"></ion-icon>
+                <ion-text color="rr-primary">Take Photo</ion-text>
+                </ion-chip>
+          </div>
+          <ion-item lines="full">
+            <ion-label class="rr-label" position="floating" color="rr-tertiary">Last Name *</ion-label>
+            <ion-input type="text" formControlName="last_name"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.last_name">
+              <div class="error-message"
+                *ngIf="register_user_form.controls['last_name'].hasError(validation.type)
+                      && (register_user_form.controls['last_name'].dirty || register_user_form.controls['last_name'].touched)">
+                <ion-text color="danger">{{ validation.message }}</ion-text>
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item>
+            <ion-label class="rr-label" position="floating" color="rr-tertiary">First Name *</ion-label>
+            <ion-input type="text" formControlName="first_name" autocapitalize="words"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.first_name">
+              <div class="error-message"
+                *ngIf="register_user_form.controls['first_name'].hasError(validation.type)
+                      && (register_user_form.controls['first_name'].dirty || register_user_form.controls['first_name'].touched)">
+                <ion-text color="danger">{{ validation.message }}</ion-text>
+              </div>
+            </ng-container>
+          </div>
+          <ion-item>
+            <ion-label class="rr-label" position="floating" color="rr-tertiary">Middle Name</ion-label>
+            <ion-input type="text" formControlName="middle_name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="rr-label" position="floating" color="rr-tertiary">Contact *</ion-label>
+            <ion-input type="text" formControlName="mobile_1"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.mobile_1">
+              <div class="error-message"
+                *ngIf="register_user_form.controls['mobile_1'].hasError(validation.type)
+                      && (register_user_form.controls['mobile_1'].dirty || register_user_form.controls['mobile_1'].touched)">
+                <ion-text color="danger">{{ validation.message }}</ion-text>
+              </div>
+            </ng-container>
+          </div>
+          <ion-row>
+            <ion-col size="6">
+                  <ion-item>
+                      <ion-label class="rr-label" position="floating" color="rr-tertiary">Age *</ion-label>
+                      <ion-input type="text" formControlName="age"></ion-input>
+                  </ion-item>
+                  <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.age">
+
+                      <div class="error-message" *ngIf="register_user_form.controls['age'].hasError(validation.type)
+                      && (register_user_form.controls['age'].dirty || register_user_form.controls['age'].touched)">
+                      <ion-text color="danger">{{ validation.message }}</ion-text>
+                      </div>
+                    </ng-container>
+                  </div>
+            </ion-col>
+
+            <ion-col size="6">
+              <ion-item>
+                <ion-label class="rr-label" position="floating" color="rr-tertiary">Date of Birth *</ion-label>
+                <ion-datetime style="padding-bottom:5px; " displayFormat="DD-MMM-YYYY" formControlName="dob" ></ion-datetime>
+
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.dob">
+                  <div class="error-message"
+                    *ngIf="register_user_form.controls['dob'].hasError(validation.type)
+                        && (register_user_form.controls['dob'].dirty || register_user_form.controls['dob'].touched)">
+                            <ion-text color="danger">{{ validation.message }}</ion-text>
+                        </div>
+                      </ng-container>
+                    </div>
+            </ion-col>
+            </ion-row>
+
+          <ion-row>
+                  <ion-col size="6">
+                    <ion-item>
+                        <ion-label class="rr-label" position="floating" color="rr-tertiary">Gender *</ion-label>
+                        <ion-select type="text" name="gender" formControlName="gender">
+                            <ion-select-option *ngFor="let gender of genderList" value="{{gender.key}}">{{gender.value}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <div class="validation-errors">
+                      <ng-container *ngFor="let validation of validation_messages.gender">
+                        <div class="error-message" *ngIf="register_user_form.controls['gender'].hasError(validation.type)
+                        && (register_user_form.controls['gender'].dirty || register_user_form.controls['gender'].touched)">
+                            <ion-text color="danger">{{ validation.message }}</ion-text>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-item>
+                        <ion-label class="rr-label" position="floating" color="rr-tertiary">Marital Status *</ion-label>
+                        <ion-select type="text" formControlName="marital_status">
+                            <ion-select-option *ngFor="let marital of maritalList" value="{{marital.key}}">{{marital.value}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <div class="validation-errors">
+                      <ng-container *ngFor="let validation of validation_messages.marital_status">
+                        <div class="error-message" *ngIf="register_user_form.controls['marital_status'].hasError(validation.type)
+                        && (register_user_form.controls['marital_status'].dirty || register_user_form.controls['marital_status'].touched)">
+                  <ion-text color="danger">{{ validation.message }}</ion-text>
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+          <ion-item>
+            <ion-label class="rr-label" position="floating" color="rr-tertiary">Address *</ion-label>
+            <ion-input type="text" formControlName="address"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.address_1">
+              <div class="error-message"
+                *ngIf="register_user_form.controls['address'].hasError(validation.type)
+                      && (register_user_form.controls['address'].dirty || register_user_form.controls['address'].touched)">
+                <ion-text color="danger">{{ validation.message }}</ion-text>
+              </div>
+            </ng-container>
+          </div>
+
+
+          <ion-row>
+                    <ion-col size="6">
+                      <ion-item>
+                          <ion-label class="rr-label" position="floating" color="rr-tertiary">Area</ion-label>
+                          <ion-input type="text" formControlName="area"></ion-input>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="6">
+                      <ion-item>
+                          <ion-label class="rr-label" position="floating" color="rr-tertiary">Pincode *</ion-label>
+                          <ion-input type="text" formControlName="pincode"></ion-input>
+                      </ion-item>
+                      <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.pincode">
+                          <div class="error-message"
+                            *ngIf="register_user_form.controls['pincode'].hasError(validation.type)
+                                  && (register_user_form.controls['pincode'].dirty || register_user_form.controls['pincode'].touched)">
+                            <ion-text color="danger">{{ validation.message }}</ion-text>
+                          </div>
+                        </ng-container>
+                      </div>
+
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="4">
+                      <ion-item>
+                          <ion-label class="rr-label" position="floating" color="rr-tertiary">City</ion-label>
+                          <ion-input type="text" formControlName="city"></ion-input>
+                      </ion-item>
+                  </ion-col>
+
+                    <ion-col size="4">
+                      <ion-item>
+                          <ion-label class="rr-label" position="floating" color="rr-tertiary">State</ion-label>
+                          <ion-select type="text" formControlName="state_code">
+                              <ion-select-option *ngFor="let state of stateList" value="{{state.key}}">{{state.value}}</ion-select-option>
+                          </ion-select>
+                      </ion-item>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-item >
+                            <ion-label class="rr-label" position="floating" color="rr-tertiary">Country</ion-label>
+                            <ion-select type="text" formControlName="country_code">
+                                <ion-select-option *ngFor="let country of countryList" value="{{country.key}}">{{country.value}}</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        </ion-col>
+                  </ion-row>
+                  <div padding>
+
+                        <ion-button class="submit-btn app-button" full type="submit" [disabled]="!register_user_form.valid" (click)="onSubmit()" expand="block" color="dark">
+                            <ion-text color="light">Save Details</ion-text>
+                        </ion-button>
+                    </div>
+
+        </ion-col>
+      </ion-row>
+     </ion-grid>
+  </form>
+</ion-content>

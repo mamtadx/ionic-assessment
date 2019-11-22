@@ -24,3 +24,43 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.hcs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .vcs {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+  .title {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .subtitle {
+    font-size: 13px;
+  }
+  .menu-icon {
+    font-size: 11px;
+  }
+  .dp-image{
+    width: 40px;
+    height: 40px;
+  }
+  .dp-avatar{
+    width: 45px;
+    height: 45px;
+    align-content: center
+  }
+  .app-button {
+      font-size : 16px;
+      text-transform:none;
+    }
+.dp-logo{
+    width: 80px;
+    height: 80px;
+  }

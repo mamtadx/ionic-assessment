@@ -1,0 +1,40 @@
+<app-header></app-header>
+<ion-content>
+    <p style="padding-left:15px;">
+    <ion-label style="font-size:17px;"><p>
+      {{currentQ + 1}} . {{questions[currentQ].Q}}
+      </p></ion-label>
+    </p>
+    <img [src]="questions[currentQ].img" *ngIf="questions[currentQ].img!=''"  height="100"/>
+    <form [formGroup]="examForm">
+        <ion-list>
+          <ion-radio-group formControlName="answers">
+            <ion-list-header>
+              <ion-label>Choose Answer</ion-label>
+            </ion-list-header>
+            <ion-item *ngFor="let choice of questions[currentQ].choices; let i=index">
+              <ion-label><p>{{choice}}</p></ion-label>
+              <ion-radio slot="start" value="{{i}}" *ngIf="opType=='attempt' || (opType=='result' && i != answeredOption[currentQ])"></ion-radio>
+              <ion-radio slot="start" value="{{i}}" checked *ngIf="opType=='result' && i == answeredOption[currentQ]"></ion-radio>
+              <div *ngIf="opType=='result'">
+                <ion-col size="2" *ngIf="i == questions[currentQ].correct"><ion-icon color="success" name="checkmark"></ion-icon></ion-col>
+                <ion-col size="2" *ngIf="i == answeredOption[currentQ] && answeredOption[currentQ] != questions[currentQ].correct"><ion-icon color="danger" name="close"></ion-icon>  </ion-col>
+                </div>
+            </ion-item>
+          </ion-radio-group>
+
+      </ion-list>
+</form>
+
+<ion-fab vertical="bottom" horizontal="end">
+  <ion-fab-button color="secondary" (click)="next()" *ngIf="opType=='attempt' && !isLast">
+    <ion-text>Next</ion-text>
+  </ion-fab-button>
+  <ion-fab-button color="secondary" (click)="finish()" *ngIf="opType=='attempt' && isLast">
+    <ion-text>Finish</ion-text>
+  </ion-fab-button>
+  <ion-fab-button color="secondary" (click)="back()" *ngIf="opType=='result'">
+    <ion-text>Back</ion-text>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

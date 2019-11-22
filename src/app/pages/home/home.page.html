@@ -1,0 +1,81 @@
+<!-- <ion-content>
+  <br />
+  <hr class="dashboard-line"/>
+  <br />
+  <ion-grid class="dashboard-container">
+        <ion-row >
+            <ion-col size=6 *ngFor="let item of menuitems; let i=index" color="primary">
+              <div class="dashboard-item" style="background-color: #A0C5FA;">
+                <ion-icon icon="cart" color="light" style="zoom:1.5"></ion-icon><br />
+                <ion-text class="dashboard-text" color="light" >
+                    <span  class="nowrap">{{item.name}}</span>
+                </ion-text>
+
+               </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <br>
+</ion-content> -->
+<ion-content>
+  <ion-list-header color="light" no-padding>Vertical Bar Chart</ion-list-header>
+  <ion-card class="welcome-card" >
+    <ion-card-header>
+      <ion-card-subtitle>Percentiles per Topic</ion-card-subtitle>
+      <ion-card-title>J2EE Mains Exam</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barChart></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card class="welcome-card" text-center (click)="multipleQ('physics')" color="color1">
+        <ion-card-header>
+          <!-- <ion-card-subtitle>Percentiles per Topic</ion-card-subtitle> -->
+          <ion-card-title color="light" style="font-size:17px;">Physics</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon icon="headset" color="facebook" style="zoom:.75"></ion-icon><br />
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card class="welcome-card" text-center color="color2">
+        <ion-card-header>
+          <!-- <ion-card-subtitle>Percentiles per Topic</ion-card-subtitle> -->
+          <ion-card-title color="light" style="font-size:17px;">Chemistry</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon icon="tv" color="facebook" style="zoom:1"></ion-icon><br />
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card class="welcome-card" text-center (click)="multipleQ('maths')" color="color3">
+        <ion-card-header>
+          <!-- <ion-card-subtitle>Percentiles per Topic</ion-card-subtitle> -->
+          <ion-card-title color="light" style="font-size:17px;">Maths</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon icon="calculator" color="facebook" style="zoom:."></ion-icon><br />
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card class="welcome-card" text-center color="color4">
+        <ion-card-header>
+          <!-- <ion-card-subtitle>Percentiles per Topic</ion-card-subtitle> -->
+          <ion-card-title color="light" style="font-size:17px;">Result</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon icon="bicycle" color="facebook" style="zoom:1"></ion-icon><br />
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+<!-- <app-footer></app-footer> -->

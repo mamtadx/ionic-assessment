@@ -1,0 +1,23 @@
+<ion-toolbar color="dark">
+    <ion-buttons slot="end">
+        <ion-menu-toggle>
+            <ion-button autoHide="false">
+                <ion-text color="light">
+                    <ion-icon name="menu" style="zoom:1.50;"></ion-icon>
+                </ion-text>
+            </ion-button>
+        </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>
+        <div class="hcs">
+            <ion-avatar class="dp-avatar">
+                <!-- <ion-img src="assets/icon.png" class="dp-image" (click)="home()"></ion-img> -->
+                <text-avatar [text]="user" ></text-avatar>
+            </ion-avatar>
+            <div class="vcs">
+              <ion-text class="title" color="light"> Welcome</ion-text>
+              <ion-text class="subtitle" color="light"> {{user}}</ion-text>
+            </div>
+        </div>
+    </ion-title>
+</ion-toolbar>
